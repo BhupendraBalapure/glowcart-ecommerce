@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { useRouter, useSearchParams } from "next/navigation";
+import { useSearchParams } from "next/navigation";
 import { signIn } from "next-auth/react";
 import { Loader2 } from "lucide-react";
 import { toast } from "sonner";
@@ -12,7 +12,6 @@ import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
 export function LoginForm() {
-  const router = useRouter();
   const params = useSearchParams();
   const callbackUrl = params.get("callbackUrl") || "/dashboard";
 
@@ -28,15 +27,16 @@ export function LoginForm() {
       password,
       redirect: false,
     });
-    setLoading(false);
 
     if (res?.error) {
+      setLoading(false);
       toast.error("Invalid email or password");
       return;
     }
     toast.success("Welcome back!");
-    router.push(callbackUrl);
-    router.refresh();
+    // Hard navigation so the freshly-set auth cookie is sent with the request
+    // (avoids a redirect race where middleware bounces back to /login).
+    window.location.href = callbackUrl;
   }
 
   return (
