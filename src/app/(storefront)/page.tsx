@@ -8,6 +8,8 @@ import { OffersCountdown } from "@/components/home/offers-countdown";
 import { Testimonials } from "@/components/home/testimonials";
 import { BlogTeaser } from "@/components/home/blog-teaser";
 import { InstagramGallery } from "@/components/home/instagram-gallery";
+import { ShopTheLook } from "@/components/home/shop-the-look";
+import { InTheSpotlight } from "@/components/home/in-the-spotlight";
 import { RecentlyViewed } from "@/components/product/recently-viewed";
 
 export default function HomePage() {
@@ -27,6 +29,7 @@ export default function HomePage() {
         products={bestSellers}
         href="/shop?sort=popular"
       />
+      <ShopTheLook />
       <BrandStrip />
       <ProductSection
         eyebrow="New launches"
@@ -36,6 +39,7 @@ export default function HomePage() {
         href="/shop?filter=new"
       />
       <OffersCountdown />
+      <InTheSpotlight />
       <ProductSection
         eyebrow="Trending now"
         title="What everyone's loving"

@@ -1,135 +1,145 @@
-"use client";
-
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import { ArrowRight, Sparkles, Star } from "lucide-react";
+import { ArrowRight, ArrowUpRight, Sparkles } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
-
-const EASE = [0.22, 1, 0.36, 1] as const;
+import { Stagger, StaggerItem } from "@/components/shared/reveal";
 
 export function Hero() {
   return (
-    <section className="relative overflow-hidden glow-gradient">
-      <div className="container grid items-center gap-10 py-16 lg:grid-cols-2 lg:py-24">
-        {/* Copy */}
-        <div className="relative z-10">
-          <motion.span
-            initial={{ opacity: 0, y: 16 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, ease: EASE }}
-            className="inline-flex items-center gap-2 rounded-full border border-rosegold/20 bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-rosegold-dark backdrop-blur"
-          >
-            <Sparkles className="h-3.5 w-3.5" /> New season, new glow
-          </motion.span>
+    <section className="container py-6 lg:py-8">
+      <Stagger className="grid grid-cols-2 gap-3 sm:gap-4 lg:h-[600px] lg:grid-cols-4 lg:grid-rows-2">
+        {/* A — Headline + CTA (big tile) */}
+        <StaggerItem className="col-span-2 lg:row-span-2">
+          <div className="relative flex h-full flex-col justify-between overflow-hidden rounded-3xl glow-gradient p-7 sm:p-9">
+            {/* decorative blob */}
+            <div className="pointer-events-none absolute -right-16 -top-16 h-56 w-56 rounded-full bg-pink/50 blur-3xl" />
+            <div className="pointer-events-none absolute -bottom-20 left-10 h-48 w-48 rounded-full bg-rosegold/15 blur-3xl" />
 
-          <motion.h1
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: EASE, delay: 0.1 }}
-            className="mt-5 text-balance text-4xl font-semibold leading-[1.1] text-foreground sm:text-5xl lg:text-6xl"
-          >
-            Beauty that lets your{" "}
-            <span className="rose-gradient-text">natural glow</span> shine.
-          </motion.h1>
+            <div className="relative">
+              <span className="inline-flex items-center gap-2 rounded-full border border-rosegold/20 bg-white/70 px-4 py-1.5 text-xs font-semibold uppercase tracking-[0.15em] text-rosegold-dark backdrop-blur">
+                <Sparkles className="h-3.5 w-3.5" /> New season, new glow
+              </span>
+              <h1 className="mt-5 text-balance text-4xl font-bold leading-[1.05] text-foreground sm:text-5xl lg:text-6xl">
+                Beauty that lets your{" "}
+                <span className="bg-gradient-to-r from-rosegold to-rosegold-dark bg-clip-text text-transparent">
+                  radiance
+                </span>{" "}
+                shine.
+              </h1>
+              <p className="mt-4 max-w-md text-muted-foreground sm:text-lg">
+                Clean, luxurious formulas across makeup, skincare and fragrance —
+                curated for every skin type and every ritual.
+              </p>
+            </div>
 
-          <motion.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: EASE, delay: 0.2 }}
-            className="mt-5 max-w-md text-base text-muted-foreground sm:text-lg"
-          >
-            Discover clean, luxurious formulas across makeup, skincare and
-            fragrance — curated for every skin type and every ritual.
-          </motion.p>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.7, ease: EASE, delay: 0.3 }}
-            className="mt-8 flex flex-wrap items-center gap-3"
-          >
-            <Button asChild size="lg">
-              <Link href="/shop">
-                Shop the collection <ArrowRight className="h-4 w-4" />
-              </Link>
-            </Button>
-            <Button asChild size="lg" variant="outline">
-              <Link href="/quiz">Take the beauty quiz</Link>
-            </Button>
-          </motion.div>
-
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.5 }}
-            className="mt-9 flex items-center gap-6"
-          >
-            <div className="flex items-center gap-2">
-              <div className="flex -space-x-3">
-                {[47, 32, 20, 15].map((id) => (
-                  <Image
-                    key={id}
-                    src={`https://i.pravatar.cc/80?img=${id}`}
-                    alt=""
-                    width={36}
-                    height={36}
-                    className="h-9 w-9 rounded-full border-2 border-white object-cover"
-                  />
-                ))}
+            <div className="relative mt-6">
+              <div className="flex flex-wrap items-center gap-3">
+                <Button asChild size="lg">
+                  <Link href="/shop">
+                    Shop the collection <ArrowRight className="h-4 w-4" />
+                  </Link>
+                </Button>
+                <Button asChild size="lg" variant="outline">
+                  <Link href="/quiz">Take the beauty quiz</Link>
+                </Button>
               </div>
-              <div>
-                <div className="flex items-center gap-0.5">
-                  {Array.from({ length: 5 }).map((_, i) => (
-                    <Star key={i} className="h-3.5 w-3.5 fill-gold text-gold" />
+
+              <div className="mt-6 flex items-center gap-3">
+                <div className="flex -space-x-3">
+                  {[47, 32, 20, 15].map((id) => (
+                    <Image
+                      key={id}
+                      src={`https://i.pravatar.cc/80?img=${id}`}
+                      alt=""
+                      width={34}
+                      height={34}
+                      className="h-8 w-8 rounded-full border-2 border-white object-cover"
+                    />
                   ))}
                 </div>
-                <p className="text-xs text-muted-foreground">
-                  Loved by 50,000+ customers
+                <p className="text-sm text-muted-foreground">
+                  Loved by <span className="font-semibold text-foreground">50,000+</span> customers
                 </p>
               </div>
             </div>
-          </motion.div>
-        </div>
+          </div>
+        </StaggerItem>
 
-        {/* Visual */}
-        <motion.div
-          initial={{ opacity: 0, scale: 0.96 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.9, ease: EASE }}
-          className="relative"
-        >
-          <div className="relative mx-auto aspect-[4/5] w-full max-w-md overflow-hidden rounded-[2.5rem] shadow-soft-lg">
+        {/* B — Wide lifestyle image */}
+        <StaggerItem className="col-span-2">
+          <Link
+            href="/shop?sort=popular"
+            className="group relative block h-44 overflow-hidden rounded-3xl sm:h-52 lg:h-full"
+          >
             <Image
-              src="https://images.unsplash.com/photo-1596462502278-27bfdc403348?auto=format&fit=crop&w=900&q=80"
-              alt="GlowCart beauty products"
+              src="https://images.unsplash.com/photo-1571781926291-c477ebfd024b?auto=format&fit=crop&w=1000&q=80"
+              alt="Shop bestsellers"
               fill
               priority
-              sizes="(max-width: 1024px) 90vw, 450px"
-              className="object-cover"
+              sizes="(max-width: 1024px) 100vw, 50vw"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
             />
-          </div>
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/70 via-ink/10 to-transparent" />
+            <div className="absolute bottom-4 left-5 right-5 flex items-end justify-between text-white">
+              <div>
+                <p className="text-xs uppercase tracking-wide text-white/80">
+                  Most loved
+                </p>
+                <p className="font-serif text-xl font-semibold">Bestsellers</p>
+              </div>
+              <span className="grid h-9 w-9 place-items-center rounded-full bg-white/90 text-ink transition-transform group-hover:scale-110">
+                <ArrowUpRight className="h-4 w-4" />
+              </span>
+            </div>
+          </Link>
+        </StaggerItem>
 
-          <motion.div
-            animate={{ y: [0, -10, 0] }}
-            transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -left-2 top-10 rounded-2xl bg-white/90 p-3 shadow-soft backdrop-blur sm:left-4"
+        {/* C — Category tile */}
+        <StaggerItem>
+          <Link
+            href="/category/skincare"
+            className="group relative block h-44 overflow-hidden rounded-3xl sm:h-52 lg:h-full"
           >
-            <p className="text-xs font-semibold">Bestselling Serum</p>
-            <p className="text-[11px] text-muted-foreground">★ 4.8 · 1.2k reviews</p>
-          </motion.div>
+            <Image
+              src="https://images.unsplash.com/photo-1556228720-195a672e8a03?auto=format&fit=crop&w=700&q=80"
+              alt="Skincare"
+              fill
+              sizes="(max-width: 1024px) 50vw, 25vw"
+              className="object-cover transition-transform duration-700 group-hover:scale-105"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-ink/70 to-transparent" />
+            <div className="absolute bottom-4 left-4">
+              <p className="font-serif text-lg font-semibold text-white">Skincare</p>
+              <p className="text-xs text-white/80">Glow from within →</p>
+            </div>
+          </Link>
+        </StaggerItem>
 
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -right-2 bottom-12 rounded-2xl bg-white/90 p-3 shadow-soft backdrop-blur sm:right-4"
+        {/* D — Offer tile */}
+        <StaggerItem>
+          <Link
+            href="/shop?filter=limited"
+            className="group flex h-44 flex-col justify-between overflow-hidden rounded-3xl bg-gradient-to-br from-rosegold to-rosegold-dark p-5 text-white sm:h-52 lg:h-full"
           >
-            <p className="text-xs font-semibold text-rosegold-dark">Up to 30% off</p>
-            <p className="text-[11px] text-muted-foreground">Limited time offers</p>
-          </motion.div>
-        </motion.div>
-      </div>
+            <span className="w-fit rounded-full bg-white/20 px-3 py-1 text-[11px] font-semibold uppercase tracking-wide backdrop-blur">
+              Limited time
+            </span>
+            <div>
+              <p className="font-serif text-3xl font-bold leading-none">
+                Up to 30% off
+              </p>
+              <p className="mt-1.5 text-sm text-white/85">
+                The Glow Edit sale
+              </p>
+              <span className="mt-3 inline-flex items-center gap-1 text-sm font-semibold">
+                Shop the sale
+                <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-1" />
+              </span>
+            </div>
+          </Link>
+        </StaggerItem>
+      </Stagger>
     </section>
   );
 }
