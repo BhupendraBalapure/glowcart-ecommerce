@@ -32,3 +32,10 @@ yarn-error.log*
 
 # prisma
 /prisma/dev.db
+
+# local logs / temp output
+build-log.txt
+dev-out*.txt
+dev-err*.txt
+server-out*.txt
+server-err*.txt

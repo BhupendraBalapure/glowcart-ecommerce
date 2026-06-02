@@ -56,7 +56,10 @@ const config: Config = {
         gold: { DEFAULT: "#C9A227" },
       },
       fontFamily: {
-        serif: ["var(--font-display)", "Georgia", "serif"],
+        // Headings — Montserrat (mapped to the existing `font-serif` utility used across the app)
+        serif: ["var(--font-display)", "system-ui", "sans-serif"],
+        display: ["var(--font-display)", "system-ui", "sans-serif"],
+        // Body — Inter
         sans: ["var(--font-body)", "system-ui", "sans-serif"],
       },
       borderRadius: {

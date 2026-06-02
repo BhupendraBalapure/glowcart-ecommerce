@@ -128,7 +128,7 @@ Defined once in `globals.css` and `tailwind.config.ts`:
 | Ink | `#1E1E1E` | primary text |
 | Gold | `#C9A227` | ratings / loyalty |
 
-Typography pairs **Playfair Display** (headings) with **Inter** (body).
+Typography pairs **Montserrat** (headings) with **Inter** (body).
 
 ---
 
