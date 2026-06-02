@@ -7,7 +7,7 @@ import { Search, TrendingUp, X } from "lucide-react";
 
 import { products } from "@/data/products";
 import { formatPrice } from "@/lib/utils";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Input } from "@/components/ui/input";
 import { useUIStore } from "@/store/ui-store";
 
@@ -34,6 +34,7 @@ export function SearchOverlay() {
   return (
     <Dialog open={open} onOpenChange={setOpen}>
       <DialogContent className="top-[12%] max-w-2xl translate-y-0 gap-0 p-0">
+        <DialogTitle className="sr-only">Search products</DialogTitle>
         <div className="flex items-center gap-3 border-b border-border px-5 py-4">
           <Search className="h-5 w-5 text-muted-foreground" />
           <Input

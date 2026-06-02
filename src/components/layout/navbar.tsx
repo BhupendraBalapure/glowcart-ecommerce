@@ -20,6 +20,7 @@ import { Button } from "@/components/ui/button";
 import {
   Sheet,
   SheetContent,
+  SheetTitle,
   SheetTrigger,
 } from "@/components/ui/sheet";
 import {
@@ -236,6 +237,7 @@ function MobileMenu() {
         </Button>
       </SheetTrigger>
       <SheetContent side="left" className="w-[300px] overflow-y-auto p-0">
+        <SheetTitle className="sr-only">Navigation menu</SheetTitle>
         <div className="border-b border-border p-5">
           <Logo />
         </div>

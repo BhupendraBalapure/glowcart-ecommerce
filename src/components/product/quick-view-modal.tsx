@@ -9,7 +9,7 @@ import { toast } from "sonner";
 import { getProductBySlug } from "@/data/products";
 import { cn } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
-import { Dialog, DialogContent } from "@/components/ui/dialog";
+import { Dialog, DialogContent, DialogTitle } from "@/components/ui/dialog";
 import { Rating } from "@/components/shared/rating";
 import { Price } from "@/components/shared/price";
 import { useUIStore } from "@/store/ui-store";
@@ -50,6 +50,9 @@ export function QuickViewModal() {
   return (
     <Dialog open={!!product} onOpenChange={(o) => !o && close()}>
       <DialogContent className="max-w-3xl p-0">
+        <DialogTitle className="sr-only">
+          {product?.name ?? "Product quick view"}
+        </DialogTitle>
         {product && (
           <div className="grid gap-0 sm:grid-cols-2">
             <div className="relative aspect-square overflow-hidden bg-muted sm:rounded-l-2xl">
